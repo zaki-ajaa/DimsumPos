@@ -3,7 +3,6 @@ package com.mycompany.dimsumpos;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Main class: menjalankan program DimsumPOS
 public class Main {
 
     private static Scanner input = new Scanner(System.in);
@@ -13,7 +12,6 @@ public class Main {
     private static int totalPemasukan = 0;
     private static int jumlahTransaksi = 0;
 
-    // Membaca angka dari Scanner, mengulang jika input bukan angka
     static int bacaAngka(String pesan) {
         while (true) {
             System.out.print(pesan);
@@ -53,7 +51,6 @@ public class Main {
         System.out.println("TOTAL: Rp" + p.hitungTotal());
     }
 
-    // ===================== MODE PELANGGAN =====================
     static void modePelanggan() {
         nomorTerakhir++;
         Pesanan pesanan = new Pesanan(nomorTerakhir);
@@ -135,7 +132,6 @@ public class Main {
         System.out.println("Menunggu kasir mengonfirmasi pembayaran...");
     }
 
-    // ======================= MODE KASIR =======================
     static void modeKasir() {
         boolean aktif = true;
         while (aktif) {
@@ -209,9 +205,7 @@ public class Main {
         System.out.println("Total pemasukan        : Rp" + totalPemasukan);
     }
 
-    // ========================= MAIN =========================
     public static void main(String[] args) {
-        // Data menu awal (object dibuat dari class Menu)
         daftarMenu.add(new Menu("D01", "Dimsum Ayam", 15000, 20));
         daftarMenu.add(new Menu("D02", "Dimsum Udang", 18000, 20));
         daftarMenu.add(new Menu("D03", "Dimsum Mentai", 20000, 15));
