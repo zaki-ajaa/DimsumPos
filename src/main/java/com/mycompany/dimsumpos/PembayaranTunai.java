@@ -12,3 +12,4 @@ public class PembayaranTunai extends Pembayaran {
         System.out.println("Silakan bayar tunai ke kasir sebesar Rp" + getTotalBayar());
     }
 }
+//p

@@ -8,6 +8,11 @@ public class PembayaranQRIS extends Pembayaran {
     }
 
     @Override
+    public String getInstruksi() {
+        return "Scan kode QRIS (simulasi) untuk membayar Rp" + totalBayar;
+    }
+
+    @Override
     public void tampilkanInstruksi() {
         System.out.println("+-----------------------------+");
         System.out.println("|     SCAN QRIS (SIMULASI)    |");
@@ -15,6 +20,7 @@ public class PembayaranQRIS extends Pembayaran {
         System.out.println("|  [ ][#][ ][#][#][ ][#][ ]   |");
         System.out.println("|  [#][#][ ][ ][#][#][ ][#]   |");
         System.out.println("+-----------------------------+");
-        System.out.println("Total yang dibayar: Rp" + getTotalBayar());
+        System.out.println("Total yang dibayar: Rp" + totalBayar);
     }
 }
+//p

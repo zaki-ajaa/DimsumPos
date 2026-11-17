@@ -2,8 +2,8 @@ package com.mycompany.dimsumpos;
 
 // Superclass Pembayaran (Inheritance)
 public class Pembayaran {
-    private int totalBayar;
-    private String metode;
+    protected int totalBayar;
+    protected String metode;
 
     public Pembayaran(int totalBayar, String metode) {
         this.totalBayar = totalBayar;
@@ -13,8 +13,14 @@ public class Pembayaran {
     public int getTotalBayar() { return totalBayar; }
     public String getMetode() { return metode; }
 
-    // Method ini akan ditimpa (override) oleh subclass
+    // Teks instruksi pembayaran (dipakai oleh tampilan GUI)
+    public String getInstruksi() {
+        return "Silakan lakukan pembayaran sebesar Rp" + totalBayar;
+    }
+
+    // Versi terminal, ditimpa (override) oleh subclass
     public void tampilkanInstruksi() {
-        System.out.println("Silakan lakukan pembayaran sebesar Rp" + getTotalBayar());
+        System.out.println(getInstruksi());
     }
 }
+//p
