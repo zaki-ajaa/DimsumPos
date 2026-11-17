@@ -1,6 +1,5 @@
 package com.mycompany.dimsumpos;
 
-// Class ItemPesanan: satu baris menu di dalam keranjang
 public class ItemPesanan {
     private Menu menu;
     private int jumlah;

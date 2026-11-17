@@ -2,11 +2,10 @@ package com.mycompany.dimsumpos;
 
 import java.util.ArrayList;
 
-// Class Pesanan: keranjang pelanggan beserta status pesanannya
 public class Pesanan {
     private int nomor;
     private ArrayList<ItemPesanan> daftarItem = new ArrayList<>();
-    private String status; // MENUNGGU PEMBAYARAN atau LUNAS
+    private String status;
     private Pembayaran pembayaran;
 
     public Pesanan(int nomor) {
@@ -22,7 +21,6 @@ public class Pesanan {
     public ArrayList<ItemPesanan> getDaftarItem() { return daftarItem; }
 
     public void tambahItem(Menu menu, int jumlah) {
-        // Jika menu sudah ada di keranjang, cukup tambah jumlahnya
         for (ItemPesanan item : daftarItem) {
             if (item.getMenu().getKode().equals(menu.getKode())) {
                 item.tambahJumlah(jumlah);
