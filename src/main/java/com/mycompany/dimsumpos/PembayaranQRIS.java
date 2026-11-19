@@ -15,8 +15,8 @@ public class PembayaranQRIS extends Pembayaran {
     public void tampilkanInstruksi() {
         System.out.println("+-----------------------------+");
         System.out.println("|                             |");
-        System.out.println("|                             |");
-        System.out.println("|                             |");
+        System.out.println("|    Qris akan ditampilkan    |");
+        System.out.println("|        petugas kasir        |");
         System.out.println("|                             |");
         System.out.println("+-----------------------------+");
         System.out.println("Total yang dibayar: Rp" + totalBayar);
