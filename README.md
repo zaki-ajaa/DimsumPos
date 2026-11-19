@@ -1,6 +1,6 @@
 # DimsumPOS
 
-Aplikasi kasir (POS) berbasis console untuk toko dimsum — Tugas 4 Pemrograman Berorientasi Objek (PBO).
+Aplikasi kasir (POS) berbasis console untuk toko dimsum.
 
 ## Fitur
 - Mode Pelanggan: pilih menu, atur jumlah, lihat keranjang, pilih pembayaran (QRIS / Tunai)
