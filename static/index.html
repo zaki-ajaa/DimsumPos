@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniCashier Dimsum Mentai</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23A02B3D%27/%3E%3Cpath d=%27M6 21c0-8 4-13 10-13s10 5 10 13z%27 fill=%27%23F3E7E0%27/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell" id="shell" data-view="kasir">
+
+  <!-- ========== Sidebar ========== -->
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <button id="btn-sidebar" class="btn-toggle" aria-label="Ciutkan menu" aria-expanded="true" aria-controls="menu" title="Ciutkan / lebarkan menu">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><path d="M9.5 4.5v15"/></svg>
+    </button>
+    <div class="profil">
+      <span class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="42" height="42"><path d="M5 20c0-8 5-13 11-13s11 5 11 13z" fill="#A02B3D"/><path d="M9 15q3.5 4 7 0t7 0" fill="none" stroke="#F3E7E0" stroke-width="2.6" stroke-linecap="round"/><rect x="3" y="21" width="26" height="3" rx="1.5" fill="#AD535E"/></svg>
+      </span>
+      <strong>Dimsum Mentai</strong>
+      <small>Kasir UMKM · UniCashier</small>
+    </div>
+    <nav id="menu">
+      <button data-view="kasir" title="Kasir" class="aktif" aria-current="page">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg><span>Kasir</span></button>
+      <button data-view="produk" title="Produk">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>
+        <span>Produk</span><em id="badge-menipis" class="badge-nav" hidden aria-label="stok menipis"></em></button>
+      <button data-view="riwayat" title="Riwayat">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span>Riwayat</span></button>
+      <button data-view="laporan" title="Laporan">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Laporan</span></button>
+    </nav>
+    <div class="side-card">
+      <p class="tanggal" id="s-tanggal"></p>
+      <strong>Ruang Usaha</strong>
+      <span>UMKM Dimsum Mentai</span>
+    </div>
+  </aside>
+
+  <!-- ========== Konten tengah ========== -->
+  <main class="center" id="main">
+
+    <!-- KASIR -->
+    <section id="view-kasir" class="view aktif" aria-labelledby="jk">
+      <div class="topbar">
+        <label class="cari">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+          <input id="k-cari" type="search" placeholder="Cari menu…" aria-label="Cari menu">
+        </label>
+        <button id="k-menipis" class="btn warna" aria-pressed="false">Stok menipis</button>
+      </div>
+      <div id="k-chips" class="chips" role="group" aria-label="Kategori menu"></div>
+      <h1 class="judul-seksi" id="jk">Menu <small id="k-jumlah"></small></h1>
+      <div id="k-katalog" class="katalog"></div>
+    </section>
+
+    <!-- PRODUK -->
+    <section id="view-produk" class="view" aria-labelledby="jp">
+      <div class="topbar">
+        <label class="cari">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+          <input id="p-cari" type="search" placeholder="Cari nama, SKU, atau kategori…" aria-label="Cari produk">
+        </label>
+        <button id="p-tambah" class="btn cta">+ Tambah produk</button>
+      </div>
+      <div id="p-chips" class="chips" role="group" aria-label="Filter kategori"></div>
+      <h1 class="judul-seksi" id="jp">Produk <small>klik judul kolom untuk mengurutkan</small></h1>
+      <div class="kartu">
+        <div class="tabel-wrap"><table id="t-produk"></table></div>
+        <p id="p-info" class="kecil"></p>
+      </div>
+    </section>
+
+    <!-- RIWAYAT -->
+    <section id="view-riwayat" class="view" aria-labelledby="jr">
+      <div class="topbar">
+        <label class="cari">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+          <input id="r-cari" type="search" placeholder="Cari ID, item, atau metode…" aria-label="Cari transaksi">
+        </label>
+      </div>
+      <h1 class="judul-seksi" id="jr">Riwayat transaksi <small>klik baris untuk melihat struk</small></h1>
+      <div class="kartu"><div class="tabel-wrap"><table id="t-riwayat" class="klik"></table></div></div>
+    </section>
+
+    <!-- LAPORAN -->
+    <section id="view-laporan" class="view" aria-labelledby="jl">
+      <h1 class="judul-seksi" id="jl">Laporan penjualan <small>pendapatan, modal, dan laba</small></h1>
+      <div id="l-kartu" class="kpi"></div>
+      <div class="kartu grafik-kartu">
+        <h2>Pendapatan harian <small>7 hari terakhir</small></h2>
+        <div id="l-grafik" class="grafik"></div>
+      </div>
+      <div class="kartu">
+        <h2>Rekap harian</h2>
+        <div class="tabel-wrap"><table id="t-laporan"></table></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== Panel pesanan (hanya di Kasir) ========== -->
+  <aside class="cartpanel" aria-label="Pesanan saat ini">
+    <div class="cart-head"><h2>Pesanan</h2><span class="nomor" id="c-nomor">Pesanan baru</span></div>
+    <div id="c-items" class="cart-items"></div>
+
+    <dl class="ringkas">
+      <div><dt>Item</dt><dd id="c-sub">Rp 0</dd></div>
+      <div><dt>Diskon</dt><dd id="c-dis">-Rp 0</dd></div>
+      <div class="total"><dt>Total</dt><dd id="c-tot">Rp 0</dd></div>
+    </dl>
+    <label class="baris-input" for="c-diskon">Diskon (%)
+      <input id="c-diskon" type="number" min="0" max="100" value="0" inputmode="numeric"></label>
+
+    <h3>Pembayaran</h3>
+    <div id="c-metode" class="chips kecil" role="group" aria-label="Metode pembayaran"></div>
+    <label class="baris-input" id="c-uang-wrap" for="c-uang">Uang diterima (Rp)
+      <input id="c-uang" type="number" min="0" inputmode="numeric"></label>
+    <p id="c-kem-wrap" class="kembalian">Kembalian <strong id="c-kem">Rp 0</strong></p>
+
+    <button id="c-bayar" class="btn cta lebar besar">Bayar <kbd>F9</kbd></button>
+    <button id="c-kosong" class="btn teks bahaya lebar">Kosongkan pesanan</button>
+  </aside>
+</div>
+
+<!-- Dialog tambah/ubah produk -->
+<dialog id="dlg-produk" aria-labelledby="f-judul">
+  <form id="f-produk" autocomplete="off">
+    <h2 id="f-judul">Tambah produk</h2>
+    <label>SKU<input name="sku" required></label>
+    <label>Nama produk<input name="nama" required></label>
+    <label>Kategori<select name="kategori"></select></label>
+    <div class="dua">
+      <label>Harga jual (Rp)<input name="harga" type="number" required></label>
+      <label>HPP / modal (Rp)<input name="hpp" type="number" required></label>
+    </div>
+    <label>Stok<input name="stok" type="number" required></label>
+    <p id="f-galat" class="galat" role="alert"></p>
+    <div class="aksi"><button type="button" id="f-batal" class="btn">Batal</button>
+      <button type="submit" class="btn cta">Simpan</button></div>
+  </form>
+</dialog>
+
+<!-- Dialog struk -->
+<dialog id="dlg-struk" aria-label="Struk pembayaran">
+  <pre id="struk-isi"></pre>
+  <div class="aksi"><button id="struk-cetak" class="btn">Cetak</button><button id="struk-tutup" class="btn cta">Tutup</button></div>
+</dialog>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
